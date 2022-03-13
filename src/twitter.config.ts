@@ -7,10 +7,10 @@ class TwitterClient {
     accessToken: process.env.ACCESS_TOKEN ?? '',
     accessSecret: process.env.ACCESS_TOKEN_SECRET ?? '',
   }).readOnly
-  private nicknames: any = []; // it will be string[] after filter the nicknames correctly
+  private validNicknames: any = [];
+  private invalidNicknames: any = [];
 
   public readTweet = async (tweetId: string) => {
-
     // const searched = await roClient.v2.search("url:1502270088090685448");
     const searched = await this.client.v2.search(`conversation_id:${tweetId}`);
 
@@ -19,19 +19,22 @@ class TwitterClient {
     }
 
     for(const tweet of searched.data.data){
-      /**
-       * TODO filter only the nicknames and return them so that the twitch bot
-       * can send a message on chat and give points
-       */
+      const regex = new RegExp('\n', 'g');
 
       const nicknames = tweet.text
-        .split(' ')
-        .filter(text => !text.match('@'))
+        .replace(regex, ' ')
+        .split(/\s/g)
+        .filter(text => !text.match('@') && !text.match('https:'))
+        .flat()
 
-      this.nicknames.push(nicknames)
+      if(nicknames.length === 1){
+        this.validNicknames.push(...nicknames)
+      }else {
+        this.invalidNicknames.push(nicknames)
+      }
     }
 
-    return this.nicknames;
+    return this.validNicknames;
   }
 }
 

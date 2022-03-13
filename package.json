@@ -1,5 +1,5 @@
 {
-  "name": "twitter-bot",
+  "name": "twitch-chatbot",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,16 +12,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.26.1",
     "dotenv": "^16.0.0",
-    "node-fetch": "^3.2.3",
-    "openai": "^2.0.4",
     "tmi.js": "^1.8.5",
     "twitter-api-v2": "^1.11.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.21",
-    "@types/node-fetch": "^2.6.1",
     "@types/tmi.js": "^1.8.1",
     "tsc-node": "^0.0.3",
     "typescript": "^4.6.2"

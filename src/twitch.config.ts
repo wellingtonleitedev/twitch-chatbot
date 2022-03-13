@@ -21,23 +21,25 @@ class TwitchClient {
     this.client.connect().catch(console.error);
 
     this.client.on('connected', () => {
-      this.client.say(this.channel, "Estou para distribuir os pontos")
+      this.client.say(this.channel, "Estou pronto para distribuir os pontos")
     })
   }
 
   public initialize(){
-    this.client.on('message', async (channel, user, message, self) => {
-      console.log({ channel, user, message, self });
-
+    this.client.on('message', async (channel, user, message) => {
       if(message.match("!givepoints")){
         const [, tweetId] = message.split(' ');
+
+        if(user?.username !== this.channel){
+          this.client.say(channel, "Você não tem permissão");
+        }
 
         if(!tweetId){
           this.client.say(channel, "Você precisa informar o ID do Tweet");
         }else {
           const twitterClient = new TwitterClient();
           const nicknames = await twitterClient.readTweet(tweetId);
-          console.log({ nicknames });
+          this.givePoints(nicknames)
         }
       }
     })
@@ -45,7 +47,7 @@ class TwitchClient {
 
   public givePoints(nicknames: string[]) {
     for(const nickname of nicknames) {
-      this.client.say(this.channel, `Olá ${nickname}`)
+      this.client.say(this.channel, `!addpoints ${nickname} 20`)
     }
   }
 }
