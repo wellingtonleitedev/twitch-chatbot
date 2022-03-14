@@ -1,29 +1,17 @@
 version: '3.1'
 
 services:
-  mongo:
-    image: mongo:latest
-    container_name: mongodb
-    ports:
-      - 27017:27017
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
-      MONGO_INITDB_DATABASE: ${MONGO_DATABASE}
-
   api:
     container_name: twitch-chatbot
-    command: npm run start:dev
+    command: yarn start:dev
     build:
       context: .
       dockerfile: Dockerfile
-    # restart: "on-failure"
     volumes:
       - '.:/app'
       - '/app/node_modules'
     ports:
       - 3333:3333
-    depends_on:
-      - mongo
+    working_dir: /app
     environment:
       - NODE_ENV=development

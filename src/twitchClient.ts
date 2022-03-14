@@ -1,5 +1,5 @@
 import tmi from 'tmi.js'
-import TwitterClient from './twitter.config';
+import TwitterClient from './twitterClient';
 
 class TwitchClient {
   private channel: string = process.env.TWITCH_CHANNEL ?? '';
@@ -26,12 +26,15 @@ class TwitchClient {
   }
 
   public initialize(){
-    this.client.on('message', async (channel, user, message) => {
+    this.client.on('message', async (channel, user, message, self) => {
       if(message.match("!givepoints")){
         const [, tweetId] = message.split(' ');
 
+        if(self) return;
+
         if(user?.username !== this.channel){
           this.client.say(channel, "Você não tem permissão");
+          return;
         }
 
         if(!tweetId){
@@ -45,7 +48,7 @@ class TwitchClient {
     })
   }
 
-  public givePoints(nicknames: string[]) {
+  private givePoints(nicknames: string[]) {
     for(const nickname of nicknames) {
       this.client.say(this.channel, `!addpoints ${nickname} 20`)
     }
