@@ -39,6 +39,11 @@ $ git clone https://github.com/wellingtonleitedev/twitch-chatbot
 # Go into the repository
 $ cd twitch-chatbot
 
+# if you have docker-compose install
+# Run the application
+$ docker-compose up -d --build
+
+# if you don't have
 # Install dependencies
 $ yarn install
 
