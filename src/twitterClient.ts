@@ -9,22 +9,7 @@ class TwitterClient {
     accessToken: process.env.ACCESS_TOKEN ?? '',
     accessSecret: process.env.ACCESS_TOKEN_SECRET ?? '',
   }).readOnly
-  private validNicknames: string[] = [
-    "danicaus",
-    "RFPereira",
-    "MidoriFukami",
-    "alesuzukidev",
-    "Particlemarcos",
-    "juniormartinxo",
-    "bleenk1",
-    "joaom__00",
-    "Ramondevbr14",
-    "kollhall",
-    "draculaAoContrario",
-    "grazisuco",
-    "Deciofrancis",
-    "TFalczy",
-  ];
+  private validNicknames: string[] = [];
   private invalidNicknames: any = [];
 
   public readTweet = async (tweetId: string) => {
