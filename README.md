@@ -1,4 +1,4 @@
-# Twitch Chat bot
+# Twitch Chat bot ![visitors](https://visitor-badge.laobi.icu/badge?page_id=wellingtonleitedev.twitch-chatbot)
 
 ### This bot is to help a streamer give points for users that retweeted his publications on Twitter so that they can participate in a giveaway. Is just a MVP, new features will come up soon.
 
@@ -61,7 +61,7 @@ The bot receive a command `!givepoints ${tweet-id}` you need to change `${tweet-
 
 If you find any problems, feel free to report us with the respective title and description in the [issues][repo-issues] section. If you already know a solution to this problem, fork it and contribute, it will be a pleasure to review your pull request!
 
-----------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 
 Made by Wellington Leite 👨‍💻 [Take a look!](https://www.linkedin.com/in/wellington-leite/)
 
