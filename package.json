@@ -1,7 +1,7 @@
 {
   "name": "twitch-chatbot",
   "version": "1.0.0",
-  "description": "",
+  "description": "### This bot is to help a streamer give points for users that retweeted his publications on Twitter so that they can participate in a giveaway. Is just a MVP, new features will come up soon.",
   "main": "index.js",
   "scripts": {
     "start:dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/index.ts",
@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Wellington Leite <wellingtonleitee.s@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.0",
@@ -26,5 +26,13 @@
     "ts-node-dev": "^1.1.8",
     "tsc-node": "^0.0.3",
     "typescript": "^4.6.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wellingtonleitedev/twitch-chatbot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wellingtonleitedev/twitch-chatbot/issues"
+  },
+  "homepage": "https://github.com/wellingtonleitedev/twitch-chatbot#readme"
 }
